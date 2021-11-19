@@ -38,8 +38,8 @@ app.use("/api/v1/singleFile", router);
 
 app.use(NotFound);
 
-const Port = 5000;
+const port = process.env.PORT || 5000;
 
-app.listen(Port, () => {
-    console.log(`port is working at ${Port}`);
+app.listen(port, () => {
+    console.log(`port is working at ${port}`);
 });
