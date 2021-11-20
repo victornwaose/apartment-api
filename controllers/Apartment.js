@@ -8,10 +8,8 @@ const getAllApartment = async (req, res) => {
         if (query) {
             getApartments = await Apartment.find(query);
         } else {
-            getApartments = await Apartment.find();
+            getApartments = await Apartment.find({});
         }
-        console.log(query);
-        console.log(getApartments);
         res.status(200).json(getApartments);
     } catch (err) {
         console.log(err);
