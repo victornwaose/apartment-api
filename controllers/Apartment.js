@@ -1,10 +1,20 @@
 import Apartment from "../modules/Apartment.js";
 
 const getAllApartment = async (req, res) => {
+    const query = req.query;
+
     try {
-        const getApartment = await Apartment.find({});
-        res.status(201).json({ getApartment });
+        let getApartments;
+        if (query) {
+            getApartments = await Apartment.find(query);
+        } else {
+            getApartments = await Apartment.find();
+        }
+        console.log(query);
+        console.log(getApartments);
+        res.status(200).json(getApartments);
     } catch (err) {
+        console.log(err);
         res.status(500).json({ msg: err });
     }
 };
@@ -22,9 +32,9 @@ const createApartment = async (req, res) => {
 const getApartment = async (req, res) => {
     try {
         const { id: ApartmentId } = req.params;
-        const carousel = await Apartment.findOne({ _id: ApartmentId });
+        const apartment = await Apartment.findOne({ _id: ApartmentId });
         res.status(201).json({ apartment });
-        if (!carousel) {
+        if (!apartment) {
             return res.status(404).json({ msg: error });
         }
     } catch (error) {
@@ -50,7 +60,7 @@ const updateApartment = async (req, res) => {
     try {
         const { id: ApartmentID } = req.params;
         const apartment = await Apartment.findOneAndUpdate(
-            { _id: apartmentID },
+            { _id: ApartmentID },
             req.body,
             { new: true, runValidators: true }
         );

@@ -10,44 +10,61 @@ var _Apartment = _interopRequireDefault(require("../modules/Apartment.js"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var getAllApartment = function getAllApartment(req, res) {
-  var _getApartment;
-
+  var query, getApartments;
   return regeneratorRuntime.async(function getAllApartment$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          _context.prev = 0;
-          _context.next = 3;
-          return regeneratorRuntime.awrap(_Apartment["default"].find({}));
+          query = req.query;
+          _context.prev = 1;
 
-        case 3:
-          _getApartment = _context.sent;
-          res.status(201).json({
-            getApartment: _getApartment
-          });
-          _context.next = 10;
+          if (!query) {
+            _context.next = 8;
+            break;
+          }
+
+          _context.next = 5;
+          return regeneratorRuntime.awrap(_Apartment["default"].find(query));
+
+        case 5:
+          getApartments = _context.sent;
+          _context.next = 11;
           break;
 
-        case 7:
-          _context.prev = 7;
-          _context.t0 = _context["catch"](0);
+        case 8:
+          _context.next = 10;
+          return regeneratorRuntime.awrap(_Apartment["default"].find());
+
+        case 10:
+          getApartments = _context.sent;
+
+        case 11:
+          console.log(query);
+          console.log(getApartments);
+          res.status(200).json(getApartments);
+          _context.next = 20;
+          break;
+
+        case 16:
+          _context.prev = 16;
+          _context.t0 = _context["catch"](1);
+          console.log(_context.t0);
           res.status(500).json({
             msg: _context.t0
           });
 
-        case 10:
+        case 20:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[0, 7]]);
+  }, null, null, [[1, 16]]);
 };
 
 exports.getAllApartment = getAllApartment;
 
 var createApartment = function createApartment(req, res) {
-  var _apartment;
-
+  var apartment;
   return regeneratorRuntime.async(function createApartment$(_context2) {
     while (1) {
       switch (_context2.prev = _context2.next) {
@@ -57,9 +74,9 @@ var createApartment = function createApartment(req, res) {
           return regeneratorRuntime.awrap(_Apartment["default"].create(req.body));
 
         case 3:
-          _apartment = _context2.sent;
+          apartment = _context2.sent;
           res.status(201).json({
-            apartment: _apartment
+            apartment: apartment
           });
           _context2.next = 11;
           break;
@@ -83,7 +100,7 @@ var createApartment = function createApartment(req, res) {
 exports.createApartment = createApartment;
 
 var getApartment = function getApartment(req, res) {
-  var ApartmentId, carousel;
+  var ApartmentId, apartment;
   return regeneratorRuntime.async(function getApartment$(_context3) {
     while (1) {
       switch (_context3.prev = _context3.next) {
@@ -96,12 +113,12 @@ var getApartment = function getApartment(req, res) {
           }));
 
         case 4:
-          carousel = _context3.sent;
+          apartment = _context3.sent;
           res.status(201).json({
             apartment: apartment
           });
 
-          if (carousel) {
+          if (apartment) {
             _context3.next = 8;
             break;
           }
@@ -132,8 +149,7 @@ var getApartment = function getApartment(req, res) {
 exports.getApartment = getApartment;
 
 var deleteApartment = function deleteApartment(req, res) {
-  var ApartmentId, _apartment2;
-
+  var ApartmentId, apartment;
   return regeneratorRuntime.async(function deleteApartment$(_context4) {
     while (1) {
       switch (_context4.prev = _context4.next) {
@@ -146,9 +162,9 @@ var deleteApartment = function deleteApartment(req, res) {
           }));
 
         case 4:
-          _apartment2 = _context4.sent;
+          apartment = _context4.sent;
 
-          if (_apartment2) {
+          if (apartment) {
             _context4.next = 7;
             break;
           }
@@ -159,7 +175,7 @@ var deleteApartment = function deleteApartment(req, res) {
 
         case 7:
           res.status(201).json({
-            apartment: _apartment2
+            apartment: apartment
           });
           _context4.next = 13;
           break;
@@ -182,8 +198,7 @@ var deleteApartment = function deleteApartment(req, res) {
 exports.deleteApartment = deleteApartment;
 
 var updateApartment = function updateApartment(req, res) {
-  var ApartmentID, _apartment3;
-
+  var ApartmentID, apartment;
   return regeneratorRuntime.async(function updateApartment$(_context5) {
     while (1) {
       switch (_context5.prev = _context5.next) {
@@ -192,14 +207,14 @@ var updateApartment = function updateApartment(req, res) {
           ApartmentID = req.params.id;
           _context5.next = 4;
           return regeneratorRuntime.awrap(_Apartment["default"].findOneAndUpdate({
-            _id: apartmentID
+            _id: ApartmentID
           }, req.body, {
             "new": true,
             runValidators: true
           }));
 
         case 4:
-          _apartment3 = _context5.sent;
+          apartment = _context5.sent;
 
           if (_Apartment["default"]) {
             _context5.next = 7;

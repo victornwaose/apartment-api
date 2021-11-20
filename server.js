@@ -33,7 +33,7 @@ app.use("/upload", express.static(path.join(__dirname, "upload")));
 //middleware
 
 app.use("/api/v1/apartment", apartment);
-app.use("/api/apartment/:id", apartment);
+app.use("/api/v1/apartment/:id", apartment);
 app.use("/api/v1/singleFile", router);
 
 app.use(NotFound);
