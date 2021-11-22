@@ -35,10 +35,9 @@ const ApartmentSchema = new mongoose.Schema({
         required: [true, "description must provided"],
         trim: true,
     },
-    img: {
+    images: {
         data: Buffer,
         contentType: String,
-        
     },
     createdAt: {
         type: Date,

@@ -51,7 +51,7 @@ var ApartmentSchema = new _mongoose["default"].Schema({
     required: [true, "description must provided"],
     trim: true
   },
-  img: {
+  images: {
     data: Buffer,
     contentType: String
   },
