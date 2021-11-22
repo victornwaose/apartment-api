@@ -13,7 +13,11 @@ const singleFileUpload = async (req, res, next) => {
         res.status(201).send("File Uploaded Successfully");
     } catch (error) {
         console.log(error, "error was created at controller");
-        res.status(400).send(error.message);
+        res.status(400).send({
+            data: error,
+            status: 500,
+            message: "error on loading images",
+        });
     }
 };
 
