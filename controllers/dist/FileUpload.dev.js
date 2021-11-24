@@ -27,7 +27,7 @@ var singleFileUpload = function singleFileUpload(req, res, next) {
 
         case 4:
           console.log(file, "file");
-          res.status(201).send("File Uploaded Successfully");
+          res.status(201).send();
           _context.next = 12;
           break;
 
@@ -35,7 +35,7 @@ var singleFileUpload = function singleFileUpload(req, res, next) {
           _context.prev = 8;
           _context.t0 = _context["catch"](0);
           console.log(_context.t0, "error was created at controller");
-          res.status(400).send({
+          res.status(500).send({
             data: _context.t0,
             status: 500,
             message: "error on loading images"

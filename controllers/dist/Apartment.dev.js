@@ -16,47 +16,48 @@ var getAllApartment = function getAllApartment(req, res) {
       switch (_context.prev = _context.next) {
         case 0:
           query = req.query;
-          _context.prev = 1;
+          console.log(req.user);
+          _context.prev = 2;
 
           if (!query) {
-            _context.next = 8;
+            _context.next = 9;
             break;
           }
 
-          _context.next = 5;
+          _context.next = 6;
           return regeneratorRuntime.awrap(_Apartment["default"].find(query));
 
-        case 5:
+        case 6:
           getApartments = _context.sent;
-          _context.next = 11;
+          _context.next = 12;
           break;
 
-        case 8:
-          _context.next = 10;
+        case 9:
+          _context.next = 11;
           return regeneratorRuntime.awrap(_Apartment["default"].find({}));
 
-        case 10:
+        case 11:
           getApartments = _context.sent;
 
-        case 11:
+        case 12:
           res.status(200).json(getApartments);
-          _context.next = 18;
+          _context.next = 19;
           break;
 
-        case 14:
-          _context.prev = 14;
-          _context.t0 = _context["catch"](1);
+        case 15:
+          _context.prev = 15;
+          _context.t0 = _context["catch"](2);
           console.log(_context.t0);
           res.status(500).json({
             msg: _context.t0
           });
 
-        case 18:
+        case 19:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[1, 14]]);
+  }, null, null, [[2, 15]]);
 };
 
 exports.getAllApartment = getAllApartment;

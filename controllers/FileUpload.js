@@ -10,10 +10,10 @@ const singleFileUpload = async (req, res, next) => {
         });
         await file.save();
         console.log(file, "file");
-        res.status(201).send("File Uploaded Successfully");
+        res.status(201).send();
     } catch (error) {
         console.log(error, "error was created at controller");
-        res.status(400).send({
+        res.status(500).send({
             data: error,
             status: 500,
             message: "error on loading images",

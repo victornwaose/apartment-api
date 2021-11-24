@@ -36,8 +36,7 @@ const ApartmentSchema = new mongoose.Schema({
         trim: true,
     },
     images: {
-        data: Buffer,
-        contentType: String,
+        type: String,
     },
     createdAt: {
         type: Date,

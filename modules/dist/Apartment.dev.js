@@ -52,8 +52,7 @@ var ApartmentSchema = new _mongoose["default"].Schema({
     trim: true
   },
   images: {
-    data: Buffer,
-    contentType: String
+    type: String
   },
   createdAt: {
     type: Date,
