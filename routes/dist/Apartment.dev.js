@@ -15,9 +15,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var apartment = _express["default"].Router();
 
-apartment.use(_Firebase["default"]);
 apartment.route("/").get(_Apartment.getAllApartment);
 apartment.route("/:id").get(_Apartment.getApartment);
+apartment.use(_Firebase["default"]);
 apartment.route("/").post(_Apartment.createApartment);
 apartment.route("/:id")["delete"](_Apartment.deleteApartment);
 apartment.route("/:id").patch(_Apartment.updateApartment);
