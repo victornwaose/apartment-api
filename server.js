@@ -8,7 +8,6 @@ import cors from "cors";
 import Config from "./Config.js";
 import apartment from "./routes/Apartment.js";
 import NotFound from "./middleware/NotFound.js";
-import { router } from "./routes/FileUpload.js";
 
 const app = express();
 
@@ -34,7 +33,6 @@ app.use("/upload", express.static(path.join(__dirname, "upload")));
 
 app.use("/api/v1/apartment", apartment);
 app.use("/api/v1/apartment/:id", apartment);
-app.use("/api/v1/singleFile", router);
 
 app.use(NotFound);
 

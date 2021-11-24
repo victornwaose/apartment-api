@@ -17,7 +17,8 @@ var ApartmentSchema = new _mongoose["default"].Schema({
   },
   price: {
     type: Number,
-    required: [true, "type must be provided"]
+    required: [true, "type must be provided"],
+    "default": 0
   },
   type: {
     type: String,

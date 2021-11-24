@@ -2,7 +2,11 @@ import mongoose from "mongoose";
 
 const ApartmentSchema = new mongoose.Schema({
     name: { type: String, required: [true, "name must provided"], trim: true },
-    price: { type: Number, required: [true, "type must be provided"] },
+    price: {
+        type: Number,
+        required: [true, "type must be provided"],
+        default: 0,
+    },
     type: {
         type: String,
         required: [true, "type must be provided"],
