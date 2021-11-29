@@ -2,7 +2,6 @@ import Apartment from "../modules/Apartment.js";
 
 const getAllApartment = async (req, res) => {
     const query = req.query;
-    console.log(req.user);
     try {
         let getApartments;
         if (query) {
